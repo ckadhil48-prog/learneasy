@@ -1,0 +1,20 @@
+{
+  "title": "Sample Quiz (English + Malayalam)",
+  "questions": [
+    {
+      "question": "What is the capital of Kerala? / കേരളത്തിന്റെ തലസ്ഥാനം ഏതാണ്?",
+      "options": ["Kochi / കൊച്ചി", "Thiruvananthapuram / തിരുവനന്തപുരം", "Kozhikode / കോഴിക്കോട്", "Kannur / കണ്ണൂര്‍"],
+      "answer": "Thiruvananthapuram / തിരുവനന്തപുരം"
+    },
+    {
+      "question": "2 + 2 = ?",
+      "options": ["3", "4", "5", "22"],
+      "answer": "4"
+    },
+    {
+      "question": "Which planet is known as the Red Planet?",
+      "options": ["Venus", "Earth", "Mars", "Jupiter"],
+      "answer": "Mars"
+    }
+  ]
+}
