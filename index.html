@@ -85,9 +85,14 @@
     const startBtn = document.getElementById('start-btn');
 
     startBtn.addEventListener('click', async () => {
-      const response = await fetch('quizzes/sample.json');
-      const quizData = await response.json();
-      startQuiz(quizData);
+      try {
+        const response = await fetch('quizzes/sample.json');
+        if (!response.ok) throw new Error('Quiz file not found');
+        const quizData = await response.json();
+        startQuiz(quizData);
+      } catch (err) {
+        quizSection.innerHTML = `<p style="color:red;">⚠️ Quiz file not found. Please check quizzes/sample.json</p>`;
+      }
     });
 
     function startQuiz(quizData) {
