@@ -1,20 +1,20 @@
-{
-  "title": "Sample Quiz (English + Malayalam)",
-  "questions": [
-    {
-      "question": "What is the capital of Kerala? / കേരളത്തിന്റെ തലസ്ഥാനം ഏതാണ്?",
-      "options": ["Kochi / കൊച്ചി", "Thiruvananthapuram / തിരുവനന്തപുരം", "Kozhikode / കോഴിക്കോട്", "Kannur / കണ്ണൂര്‍"],
-      "answer": "Thiruvananthapuram / തിരുവനന്തപുരം"
-    },
-    {
-      "question": "2 + 2 = ?",
-      "options": ["3", "4", "5", "22"],
-      "answer": "4"
-    },
-    {
-      "question": "Which planet is known as the Red Planet?",
-      "options": ["Venus", "Earth", "Mars", "Jupiter"],
-      "answer": "Mars"
-    }
-  ]
-}
+[
+  {
+    "question_ml": "കേരളത്തിന്റെ തലസ്ഥാനം ഏതാണ്?",
+    "question_en": "What is the capital of Kerala?",
+    "options": ["Kochi", "Kozhikode", "Thiruvananthapuram", "Thrissur"],
+    "answer": 2
+  },
+  {
+    "question_ml": "ഇന്ത്യയുടെ ദേശീയ മൃഗം ഏതാണ്?",
+    "question_en": "What is the national animal of India?",
+    "options": ["Lion", "Elephant", "Tiger", "Deer"],
+    "answer": 2
+  },
+  {
+    "question_ml": "‘E=mc²’ ആരാണ് കണ്ടെത്തിയത്?",
+    "question_en": "Who discovered ‘E=mc²’?",
+    "options": ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"],
+    "answer": 1
+  }
+]
