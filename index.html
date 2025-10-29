@@ -4,9 +4,124 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learn Easy Quiz</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #6dd5ed, #2193b0);
+      color: #fff;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    button {
+      background: #fff;
+      color: #2193b0;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #2193b0;
+      color: #fff;
+    }
+
+    .question {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .options button {
+      background: #fff;
+      color: #2193b0;
+      margin: 5px 0;
+    }
+
+    .score {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+  </style>
 </head>
-<body style="font-family: Arial; text-align: center; margin-top: 100px;">
-  <h1>Welcome to Learn Easy Quiz App</h1>
-  <p>Your site is working successfully on GitHub Pages 🎉</p>
+<body>
+  <div class="container">
+    <h1>Learn Easy Quiz</h1>
+    <div id="quiz-section">
+      <button id="start-btn">Start Quiz</button>
+    </div>
+  </div>
+
+  <script>
+    const quizSection = document.getElementById('quiz-section');
+    const startBtn = document.getElementById('start-btn');
+
+    startBtn.addEventListener('click', async () => {
+      const response = await fetch('quizzes/sample.json');
+      const quizData = await response.json();
+      startQuiz(quizData);
+    });
+
+    function startQuiz(quizData) {
+      let currentQuestion = 0;
+      let score = 0;
+      showQuestion();
+
+      function showQuestion() {
+        const q = quizData[currentQuestion];
+        quizSection.innerHTML = `
+          <div class="question">${q.question_ml}<br><small>${q.question_en}</small></div>
+          <div class="options">
+            ${q.options.map((opt, i) => `<button data-i="${i}">${opt}</button>`).join('')}
+          </div>
+        `;
+
+        document.querySelectorAll('.options button').forEach(btn => {
+          btn.addEventListener('click', e => {
+            const selected = parseInt(e.target.getAttribute('data-i'));
+            if (selected === q.answer) score++;
+            currentQuestion++;
+            if (currentQuestion < quizData.length) showQuestion();
+            else showResult();
+          });
+        });
+      }
+
+      function showResult() {
+        quizSection.innerHTML = `
+          <div class="score">Your Score: ${score} / ${quizData.length}</div>
+          <button onclick="location.reload()">Restart</button>
+        `;
+      }
+    }
+  </script>
 </body>
 </html>
